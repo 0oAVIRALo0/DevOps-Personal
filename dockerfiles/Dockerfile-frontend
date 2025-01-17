@@ -1,0 +1,17 @@
+FROM node:alpine3.18 AS build
+
+WORKDIR /app
+
+COPY package*.json /app
+
+RUN npm install
+
+COPY . /app
+
+RUN npm run build
+
+RUN npm install -g serve
+
+EXPOSE 4015
+
+CMD ["serve", "-s", "-l", "4015", "dist/"]
