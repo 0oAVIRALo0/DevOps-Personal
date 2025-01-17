@@ -1,0 +1,12 @@
+{
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "rules": {
+    "node/no-commonjs": "off",
+    "import/no-commonjs": "off"
+  }
+}
