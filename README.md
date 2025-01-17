@@ -17,7 +17,7 @@
   sudo apt-get update && upgrade
   ```
 - Clone the repository
-- Install Node.js
+- Install Node.js (3rd point)
   https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 - In security group add inbound rule to open the port number on which the server is listening
 - Install Nginx
