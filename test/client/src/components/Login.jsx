@@ -18,8 +18,8 @@ const Login = () => {
         password,
       });
       setMessage(response.data.message);
-      if (response.status === 201) {
-        localStorage.setItem("toekn", response.data.token);
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
         navigate("/dashboard");
       }
     } catch (error) {
