@@ -18,9 +18,9 @@ const Login = () => {
         password,
       });
       setMessage(response.data.message);
-      if (response.status === 200) {
+      if (response.status === 201) {
         localStorage.setItem("toekn", response.data.token);
-        navigate("/protected");
+        navigate("/dashboard");
       }
     } catch (error) {
       setMessage(
