@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "https://visitor-management-system"; // Replace with your backend URL
+const API_URL = "https://visitor-management-system.in"; // Replace with your backend URL
 
 // SignUp Component
 const SignUp = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "https://visitor-management-system";
+const API_URL = "https://visitor-management-system.in";
 
 const Login = () => {
   const navigate = useNavigate();
