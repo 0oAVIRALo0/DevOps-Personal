@@ -3,13 +3,16 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
+
 const PORT = 3000;
 const JWT_SECRET = "aviral_test";
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 // MongoDB connection
 mongoose.connect(

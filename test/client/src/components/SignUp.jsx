@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "https://visitor-management-system"; // Replace with your backend URL
 
 // SignUp Component
 const SignUp = () => {
-  const navigate = Navigate();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
