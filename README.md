@@ -39,5 +39,11 @@
   ```
 - For HTTPS, create a SSL certificate for your domain. You can follow the steps given below:
   https://certbot.eff.org/
-- Keep in mind to add an A record (@) and a CNAME record (www) for your doman that points to the IP address of the EC2 instance. 
+- Keep in mind to add an A record (@) and a CNAME record (www) for your doman that points to the IP address of the EC2 instance.
+- You can run this command to check which ip address is your domain pointing to
+  ```
+  nslookup domain_name
+  ```
+  Or check on this website
+  https://www.whatsmydns.net/
 - Finally, make changes to your nginx configuration file to handle both HTTP as well as HTTPS requests.
