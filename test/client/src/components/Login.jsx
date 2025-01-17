@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const API_URL = "https://visitor-management-system";
 
 const Login = () => {
+  const navigate = Navigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -16,8 +18,9 @@ const Login = () => {
         password,
       });
       setMessage(response.data.message);
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token); // Save token for authenticated requests
+      if (response.status === 200) {
+        localStorage.setItem("toekn", response.data.token);
+        navigate("/protected");
       }
     } catch (error) {
       setMessage(

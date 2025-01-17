@@ -12,10 +12,13 @@ const JWT_SECRET = "aviral_test";
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/DevOpsTest", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://test:test123@cluster0.x2v72.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

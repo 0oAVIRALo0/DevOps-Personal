@@ -7,6 +7,7 @@ import {
 import "./App.css";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
@@ -17,10 +18,10 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/protected"
+          path="/dashboard"
           element={
             <ProtectedRoute>
-              <h2>Protected Content</h2>
+              <Dashboard />
             </ProtectedRoute>
           }
         />
