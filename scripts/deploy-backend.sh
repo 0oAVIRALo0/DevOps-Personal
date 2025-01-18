@@ -34,11 +34,11 @@ cd /var/www/backend/test/server
 
 # Build Docker image from the Dockerfile
 echo "Building Docker image..."
-docker build -t nodejs-backend .
+sudo docker build -t nodejs-backend .
 
 # Run the Docker container
 echo "Running Docker container..."
-docker run -d --name nodejs-backend-instance -p 3000:3000 nodejs-backend
+sudo docker run -d --name nodejs-backend-instance -p 3000:3000 nodejs-backend
 
 # Configure Nginx for reverse proxy
 echo "Configuring Nginx for reverse proxy..."
