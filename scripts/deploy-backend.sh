@@ -23,6 +23,7 @@ sudo systemctl start docker
 # Create your Node.js in /var/www/backend
 echo "Setting up Node.js backend project..."
 sudo mkdir -p /var/www/backend
+sudo chown -R $USER:$USER /var/www/backend
 
 # Git clone the repository
 echo "Cloning backend repository..."
