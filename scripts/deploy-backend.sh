@@ -30,7 +30,7 @@ echo "Cloning backend repository..."
 git clone "$REPO_URL" /var/www/backend
 
 # Navigate to the project directory
-cd /var/www/backend
+cd /var/www/backend/test/server
 
 # Build Docker image from the Dockerfile
 echo "Building Docker image..."
