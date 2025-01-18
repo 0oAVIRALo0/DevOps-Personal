@@ -14,7 +14,7 @@
   ```
 - Run the update and upgrade commands
   ```
-  sudo apt-get update && upgrade
+  sudo apt update && sudo apt upgrade -y
   ```
 - Clone the repository
 - Install Node.js (3rd point)
