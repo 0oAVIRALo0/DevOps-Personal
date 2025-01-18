@@ -61,7 +61,7 @@ EOL
 
 # Enable the Nginx configuration
 echo "Enabling Nginx configuration..."
-sudo unlink /etc/nginx/sites-enabled/default || true
+sudo unlink /etc/nginx/sites-available/default 
 sudo ln -s /etc/nginx/sites-available/nodejs-backend /etc/nginx/sites-enabled/
 
 # Test the Nginx configuration
