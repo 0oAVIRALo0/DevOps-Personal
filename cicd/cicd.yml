@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    environment {
+        // Define the Docker image tag (you can also use the commit hash or other dynamic values here)
+        IMAGE_TAG = "my-nodejs-app:${BUILD_NUMBER}"
+        DOCKER_REGISTRY = "your-docker-registry-url" // e.g., docker.io or AWS ECR
+        DOCKER_REPO = "your-docker-username/your-repo"
+    }
+
+    stages {
+        // Stage 1: Checkout code
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/your-user/your-repo.git'  // Replace with your repo URL
+            }
+        }
+
+        // Stage 2: Build Docker image
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build Docker image using Dockerfile in your repo
+                    docker.build("${DOCKER_REPO}:${IMAGE_TAG}")
+                }
+            }
+        }
+
+        // Stage 3: Run Unit Tests
+        stage('Run Tests') {
+            steps {
+                script {
+                    // Run tests (replace with your test command)
+                    sh 'npm install'  // Install dependencies
+                    sh 'npm test'     // Run your tests (Jest/Mocha, etc.)
+                }
+            }
+        }
+
+        // Stage 4: Push Docker Image to Registry
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Log in to Docker registry (if needed)
+                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'  // Define DOCKER_USERNAME and DOCKER_PASSWORD as Jenkins secrets
+
+                    // Push the Docker image to your registry
+                    sh "docker push ${DOCKER_REPO}:${IMAGE_TAG}"
+                }
+            }
+        }
+
+        // Stage 5: Deploy the Docker Container (Example: Deploy to a server or cloud)
+        stage('Deploy') {
+            steps {
+                script {
+                    // For example, you could SSH into a server and deploy the container
+                    sh "ssh user@server 'docker pull ${DOCKER_REPO}:${IMAGE_TAG} && docker run -d ${DOCKER_REPO}:${IMAGE_TAG}'"
+                    // Or you can deploy to a cloud provider, like AWS ECS, Kubernetes, etc.
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up Docker images after the job is done
+            sh 'docker system prune -f'
+        }
+        success {
+            // Actions if pipeline succeeds
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            // Actions if pipeline fails
+            echo 'Pipeline failed!'
+        }
+    }
+}
